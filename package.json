@@ -1,6 +1,6 @@
 {
   "name": "free-koa",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "使用装饰器基于koa封装的简单易用优雅的后端框架",
   "main": "index.js",
   "homepage": "https://github.com/oydf1994/free-koa",
@@ -8,7 +8,8 @@
     "dev": "nodemon index.js"
   },
   "keywords": [
-    "koa,decorator"
+    "koa",
+    "decorator"
   ],
   "author": "east",
   "license": "ISC",

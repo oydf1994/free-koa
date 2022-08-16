@@ -6,9 +6,7 @@ const lib = require('./lib/index')
 app.use(bodyParser());
 module.exports.start = async () => {
     await lib(app)
-    app.listen(global.config.port || 3100, () => {
-        console.log(`http://127.0.0.1:${global.config.port}`)
-    })
+    app.listen(global.config.port || 3100)
 }
 module.exports.app = app
 // npm publish

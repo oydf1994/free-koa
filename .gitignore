@@ -1,0 +1,9 @@
+node_modules/
+dist/
+# Log files
+*.log
+# Visual Sutio Code
+.vscode/
+.history/
+/package-lock.json
+/.eslintignore

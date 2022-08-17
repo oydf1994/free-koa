@@ -9,5 +9,6 @@ exports.Model = require("./Model");
 exports.Column = require("./Column");
 exports.Sequelize = require("./Sequelize");
 exports.Inject = require("./Inject");
+exports.Schedule = require("./Schedule");
 
 

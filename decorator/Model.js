@@ -3,23 +3,33 @@ async function getSequelize() {
         let timer = setInterval(() => {
             if (global.sequelize) {
                 clearInterval(timer)
+                clearTimeout(timerOut)
                 resolve(global.sequelize)
             }
         }, 1000);
+        let timerOut = setTimeout(() => {
+            clearInterval(timer)
+            console.error("sequelize Configuration not found")
+            resolve(false)
+        }, 5000)
     })
 }
 module.exports = (value) => async (target) => {
-    await getSequelize()
-    const t = new target()
-    let obj = {}
-    for (const k in t) {
-        obj[t[k].name] = {
-            ...t[k]
+    let flag = await getSequelize()
+    let model;
+    if (flag) {
+        const t = new target()
+        let obj = {}
+        for (const k in t) {
+            obj[t[k].name] = {
+                ...t[k]
+            }
         }
+        model = global.sequelize.define(target.name, obj, {
+            // 这是其他模型参数
+        });
+        // model.sync({ force: true });
     }
-    const s = global.sequelize.define(target.name, obj, {
-        // 这是其他模型参数
-    });
-    // s.sync({ force: true });
-    return s
+    return model
+
 }
